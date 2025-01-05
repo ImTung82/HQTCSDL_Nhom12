@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuanLyDonHangController;
+use App\Http\Controllers\QuanLyNhanVienController;
 use App\Http\Controllers\SPDonHangController;
 
 Route::get('/', function () {
@@ -29,3 +30,19 @@ Route::get('/spdonhang/edit/{id}/{donHangId}', [SPDonHangController::class, 'edi
 Route::put('/spdonhang/update/{id}', [SPDonHangController::class, 'update'])->name('spdonhang.update');
 
 Route::delete('/spdonhang/{id}/{donHangId}', [SPDonHangController::class, 'destroy'])->name('spdonhang.destroy');
+
+Route::get('/nhanvien/allnhanvien', [QuanLyNhanVienController::class, 'allNhanVien'])->name('nhanvien.allnhanvien');
+
+Route::get('/nhanvien/create', [QuanLyNhanVienController::class, 'create'])->name('nhanvien.create');
+
+Route::post('/nhanvien/store', [QuanLyNhanVienController::class, 'store'])->name('nhanvien.store');
+
+Route::get('/nhanvien/{id}/edit', [QuanLyNhanVienController::class, 'edit'])->name('nhanvien.edit');
+
+Route::put('/nhanvien/{id}', [QuanLyNhanVienController::class, 'update'])->name('nhanvien.update');
+
+Route::delete('/nhanvien/{id}', [QuanLyNhanVienController::class, 'destroy'])->name('nhanvien.destroy');
+
+Route::get('/nhanvien/chucvu', [QuanLyNhanVienController::class, 'showChucVu'])->name('nhanvien.chucvu');
+
+Route::get('/nhanvien/tienthuong', [QuanLyNhanVienController::class, 'showTienThuong'])->name('nhanvien.tienthuong');

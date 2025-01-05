@@ -144,6 +144,19 @@
             </ul>
         </div>
 
+        <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false">
+                Quản lý nhân viên
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                <li><a class="dropdown-item" href="{{ route('nhanvien.create') }}">Thêm nhân viên mới</a></li>
+                <li><div class="custom-divider-icon"></div></li>
+                <li><a class="dropdown-item" href="{{ route('nhanvien.allnhanvien') }}">Danh sách nhân viên</a></li>
+                <li><a class="dropdown-item" href="{{ route('nhanvien.chucvu') }}">Chức vụ nhân viên</a></li>
+                <li><a class="dropdown-item" href="{{ route('nhanvien.tienthuong') }}">Tiền thưởng của nhân viên theo năm</a></li>
+            </ul>
+        </div>
+
         <div class="dropdown mb-3">
             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu4" data-bs-toggle="dropdown" aria-expanded="false">
                 Thống kê
