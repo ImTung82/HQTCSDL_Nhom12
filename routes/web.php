@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuanLyDonHangController;
 use App\Http\Controllers\QuanLyNhanVienController;
 use App\Http\Controllers\SPDonHangController;
+use App\Http\Controllers\QuanLySanPhamController;
 
 Route::get('/', function () {
     return view('index');
@@ -46,3 +47,20 @@ Route::delete('/nhanvien/{id}', [QuanLyNhanVienController::class, 'destroy'])->n
 Route::get('/nhanvien/chucvu', [QuanLyNhanVienController::class, 'showChucVu'])->name('nhanvien.chucvu');
 
 Route::get('/nhanvien/tienthuong', [QuanLyNhanVienController::class, 'showTienThuong'])->name('nhanvien.tienthuong');
+
+
+Route::get('/sanpham/allsanpham',[QuanLySanPhamController::class,'allSanPham'])->name('sanpham.allsanpham');
+
+Route::get('/sanpham/allsanpham/{id}', [QuanLySanPhamController::class, 'chiTietSanPham'])->name('sanpham.chitietsanpham');
+
+Route::get('/sanpham/sanphambanchay',[QuanLySanPhamController::class, 'sanPhamBanChay'])->name('sanpham.spbanchay');
+
+Route::get('/sanpham/create',[QuanLySanPhamController::class, 'create'])->name('sanpham.create');
+
+Route::post('/sanpham/store', [QuanLySanPhamController::class, 'store'])->name('sanpham.store');
+
+Route::get('/nhanvien/{id}/edit', [QuanLySanPhamController::class, 'edit'])->name('sanpham.edit');
+
+Route::put('/sanpham/{id}', [QuanLySanPhamController::class, 'update'])->name('sanpham.update');
+
+Route::delete('/sanpham/{id}', [QuanLySanPhamController::class, 'destroy'])->name('sanpham.destroy');
