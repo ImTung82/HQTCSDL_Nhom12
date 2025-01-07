@@ -117,10 +117,10 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a class="dropdown-item" href="{{route('sanpham.create')}}">Thêm sản phẩm mới</a></li>
+                <li><a class="dropdown-item" href="{{route('sanpham.timkiemsanpham')}}">Tìm kiếm sản phẩm</a></li>
                 <li><div class="custom-divider-icon"></div></li>
                 <li><a class="dropdown-item" href="{{ route('sanpham.spbanchay')}}">Danh sách sản phẩm bán chạy</a></li>
                 <li><a class="dropdown-item" href="{{ route('sanpham.allsanpham')}}">Danh sách sản phẩm</a></li>
-                
             </ul>
         </div>
 

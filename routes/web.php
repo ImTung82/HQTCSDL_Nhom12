@@ -64,3 +64,6 @@ Route::get('/nhanvien/{id}/edit', [QuanLySanPhamController::class, 'edit'])->nam
 Route::put('/sanpham/{id}', [QuanLySanPhamController::class, 'update'])->name('sanpham.update');
 
 Route::delete('/sanpham/{id}', [QuanLySanPhamController::class, 'destroy'])->name('sanpham.destroy');
+
+Route::get('/sanpham/timkiem', [QuanLySanPhamController::class, 'find'])->name('sanpham.timkiemsanpham');
+

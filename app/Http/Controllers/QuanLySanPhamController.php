@@ -127,4 +127,34 @@ class QuanLySanPhamController extends Controller
         return redirect()->route('sanpham.allsanpham')->with('success', 'Xóa sản phẩm thành công.');
 
     }
+
+    public function find(Request $request)
+    {
+        // Lấy danh sách loại hàng để hiển thị trong dropdown
+        $loaihang = DB::table('LoaiHang')->get();
+
+        // Lấy các giá trị tìm kiếm từ input
+        $idLoaiHang = $request->input('id_loaihang');
+        $tenSanPham = $request->input('ten_sanpham');
+
+        // Khởi tạo query cơ bản
+        $sanphamQuery = DB::table('SanPham')->select('IDSanPham', 'TenSanPham', 'SoLuongCon', 'DonGiaBan', 'TyLeGiamGia','TrangThai');
+
+        // Nếu có IDLoaiHang, tìm theo loại hàng
+        if ($idLoaiHang) {
+            $sanphamQuery->where('IDLoaiHang', $idLoaiHang);
+        }
+
+        // Nếu có tên sản phẩm, tìm theo tên sản phẩm
+        if ($tenSanPham) {
+            $sanphamQuery->where('TenSanPham', 'LIKE', '%' . $tenSanPham . '%');
+        }
+
+        // Lấy kết quả sản phẩm
+        $sanpham = $sanphamQuery->get();
+
+        // Trả về view với danh sách loại hàng và kết quả tìm kiếm
+        return view('sanpham.timkiemsanpham', compact('loaihang', 'sanpham', 'idLoaiHang', 'tenSanPham'));
+    }
 }
+
