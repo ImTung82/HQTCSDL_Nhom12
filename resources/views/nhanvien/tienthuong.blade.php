@@ -7,9 +7,9 @@
     <h1>Tiền Thưởng Nhân Viên</h1>
 
     <!-- Hiển thị thông báo lỗi nếu có -->
-    @if(session('error'))
+    @if($error)
         <div class="alert alert-danger">
-            {{ session('error') }}
+            {{ $error }}
         </div>
     @endif
 
@@ -47,7 +47,7 @@
                         <td>{{ $row['IDNhanVien'] }}</td>
                         <td>{{ $row['HoTen'] }}</td>
                         <td>{{ $row['SoDonHang'] }}</td>
-                        <td>{{ number_format($row['TienThuong'], 0) }}</td>
+                        <td>{{ number_format($row['TienThuong'], 0) }}$</td>
                     </tr>
                 @endforeach
             </tbody>

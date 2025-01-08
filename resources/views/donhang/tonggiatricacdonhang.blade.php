@@ -15,7 +15,7 @@
             @foreach ($orderValues as $row)
                 <tr>
                     <td>{{ $row['Ngay'] }}</td>
-                    <td>{{ $row['TongGiaTri'] }}</td>
+                    <td>{{ $row['TongGiaTri'] }}$</td>
                 </tr>
             @endforeach
         </tbody>

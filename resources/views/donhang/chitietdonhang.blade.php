@@ -30,11 +30,11 @@
                 <tr>
                     <td>{{ $detail->IDSanPham }}</td>
                     <td>{{ $detail->TenSanPham }}</td>
-                    <td>{{ number_format($detail->DonGiaBan, 3) }}</td>
+                    <td>{{ number_format($detail->DonGiaBan, 3) }}$</td>
                     <td>{{ number_format($detail->TyLeGiamGia * 100, 2) }}%</td> <!-- Hiển thị tỷ lệ giảm giá -->
-                    <td>{{ number_format($detail->GiaSauGiam, 3) }}</td>
+                    <td>{{ number_format($detail->GiaSauGiam, 3) }}$</td>
                     <td>{{ $detail->SoLuong }}</td>
-                    <td>{{ number_format($detail->ThanhTienSanPham, 3) }}</td>
+                    <td>{{ number_format($detail->ThanhTienSanPham, 3) }}$</td>
 
                     <!-- Cột hành động với nút sửa và nút xóa -->
                     <td>

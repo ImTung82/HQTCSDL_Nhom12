@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Quản Lý Đơn Hàng')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Thêm Bootstrap Icons từ CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         body {
             display: flex;
@@ -113,9 +116,11 @@
                 Quản lý sản phẩm
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a class="dropdown-item" href="">Danh sách sản phẩm</a></li>
+                <li><a class="dropdown-item" href="{{route('sanpham.create')}}">Thêm sản phẩm mới</a></li>
+                <li><a class="dropdown-item" href="{{route('sanpham.timkiemsanpham')}}">Tìm kiếm sản phẩm</a></li>
                 <li><div class="custom-divider-icon"></div></li>
-                <li><a class="dropdown-item" href="">Thêm sản phẩm mới</a></li>
+                <li><a class="dropdown-item" href="{{ route('sanpham.allsanpham')}}">Danh sách sản phẩm</a></li>
+                <li><a class="dropdown-item" href="{{ route('sanpham.spbanchay')}}">Danh sách sản phẩm bán chạy</a></li>
             </ul>
         </div>
 
@@ -124,8 +129,10 @@
                 Quản lý khách hàng
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a class="dropdown-item" href="">Danh sách khách hàng</a></li>
-                <li><a class="dropdown-item" href="">Thêm khách hàng mới</a></li>
+                <li><a class="dropdown-item" href="{{ route('khachhang.create') }}">Thêm khách hàng mới</a></li>
+                <li><div class="custom-divider-icon"></div></li>
+                <li><a class="dropdown-item" href="{{ route('khachhang.allkhachhang') }}">Danh sách khách hàng</a></li>
+                <li><a class="dropdown-item" href="{{ route('khachhang.allkhachhangthanthiet') }}">Danh sách khách hàng thân thiết</a></li>       
             </ul>
         </div>
  
@@ -134,13 +141,11 @@
                 Quản lý đơn hàng
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                <li><a class="dropdown-item" href="{{ route('index') }}">Thêm đơn hàng mới</a></li>
+                <li><a class="dropdown-item" href="{{ route('donhang.create') }}">Thêm đơn hàng mới</a></li>
                 <li><a class="dropdown-item" href="{{ route('spdonhang.create') }}">Thêm sản phẩm vào đơn hàng</a></li>
-
                 <li><div class="custom-divider-icon"></div></li>
-
-                <li><a class="dropdown-item" href="{{ route('donhang.sldaban') }}">Số lượng đã bán của từng sản phẩm</a></li>
                 <li><a class="dropdown-item" href="{{ route('donhang.alldonhang') }}">Danh sách đơn hàng</a></li>
+                <li><a class="dropdown-item" href="{{ route('donhang.sldaban') }}">Số lượng đã bán của từng sản phẩm</a></li>
             </ul>
         </div>
 
@@ -164,6 +169,8 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
                 <li><a class="dropdown-item" href="{{ route('donhang.tonggiatricacdonhang') }}">Tổng giá trị của các đơn hàng theo từng ngày</a></li>
                 <li><a class="dropdown-item" href="{{ route('donhang.tinhloinhuantheongay') }}">Lợi nhuận theo từng ngày</a></li>
+                <li><div class="custom-divider-icon"></div></li>
+                <li><a class="dropdown-item" href="{{ route('nhanvien.thongkeluong') }}">Lương của nhân viên theo tháng</a></li>
             </ul>
         </div>
     </div>

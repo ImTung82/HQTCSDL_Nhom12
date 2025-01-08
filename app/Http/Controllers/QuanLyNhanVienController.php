@@ -115,34 +115,70 @@ class QuanLyNhanVienController extends Controller
         // Trả dữ liệu vào view
         return view('nhanvien.chucvu', ['data' => $data]);
     }
-
+    
     public function showTienThuong(Request $request)
     {
-        // Kiểm tra xem có năm trong request không
+        // Lấy năm từ request
         $nam = $request->input('nam');
     
-        // Nếu không có năm thì lấy một giá trị mặc định hoặc không làm gì
+        // Nếu không có năm trong request, hiển thị thông báo lỗi
         if (!$nam) {
-            // Bạn có thể gán một năm mặc định (ví dụ: 2020) nếu muốn
-            $nam = 2024;
+            return view('nhanvien.tienthuong', [
+                'data' => [],
+                'nam' => null,
+                'error' => 'Vui lòng chọn năm trước khi xem tiền thưởng.'
+            ]);
         }
-        
-        // Tiếp tục xử lý dữ liệu với năm đã chọn
+    
         $data = [];
-        
+    
         // Kết nối PDO để lấy nhiều kết quả từ thủ tục
         $pdo = DB::getPdo();
         $stmt = $pdo->prepare('EXEC sp_HienThiTienThuongTheoNam :nam');
         $stmt->bindParam(':nam', $nam, PDO::PARAM_INT);
         $stmt->execute();
-        
+    
         // Lấy kết quả từ thủ tục và gộp lại thành một mảng duy nhất
         do {
             $data = array_merge($data, $stmt->fetchAll(PDO::FETCH_ASSOC));
         } while ($stmt->nextRowset());
-        
+    
         // Trả dữ liệu vào view
-        return view('nhanvien.tienthuong', ['data' => $data, 'nam' => $nam]);
+        return view('nhanvien.tienthuong', [
+            'data' => $data,
+            'nam' => $nam,
+            'error' => null
+        ]);
     }
     
+    public function showLuongThang(Request $request)
+    {
+        // Lấy năm và tháng từ request
+        $nam = $request->input('nam');
+        $thang = $request->input('thang');
+
+        // Kiểm tra xem năm và tháng có hợp lệ không
+        if (!$nam || !$thang) {
+            return view('nhanvien.thongkeluong', [
+                'data' => [],
+                'nam' => $nam,
+                'thang' => $thang,
+                'error' => 'Vui lòng chọn cả năm và tháng.'
+            ]);
+        }
+
+        // Thực hiện gọi thủ tục lưu trữ
+        $data = DB::select('EXEC sp_ThongKeLuongThang :nam, :thang', [
+            'nam' => $nam,
+            'thang' => $thang,
+        ]);
+
+        // Trả dữ liệu vào view
+        return view('nhanvien.thongkeluong', [
+            'data' => $data,
+            'nam' => $nam,
+            'thang' => $thang,
+            'error' => null
+        ]);
+    }
 }

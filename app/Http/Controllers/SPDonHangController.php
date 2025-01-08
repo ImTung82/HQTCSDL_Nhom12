@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\QuanLyKhachHangController;
 
 class SPDonHangController extends Controller
 {
+    protected $quanLyKhachHangController;
+
+    public function __construct(QuanLyKhachHangController $quanLyKhachHangController)
+    {
+        $this->quanLyKhachHangController = $quanLyKhachHangController;
+    }
+    
     public function create()
     {
         // Lấy danh sách đơn hàng, khách hàng từ cơ sở dữ liệu
@@ -72,6 +80,9 @@ class SPDonHangController extends Controller
             'ThanhTien' => $thanhTien
         ]);
 
+        // Gọi phương thức updateThongTinKHTT() từ QuanLyKhachHangController
+        $this->quanLyKhachHangController->updateThongTinKHTT();
+
         return redirect()->route('spdonhang.create')->with('success', 'Thêm sản phẩm vào đơn hàng thành công');
     }
 
@@ -129,7 +140,10 @@ class SPDonHangController extends Controller
                 'SoLuong' => $soLuong,
                 'ThanhTien' => $thanhTien,
             ]);
-    
+            
+        // Gọi phương thức updateThongTinKHTT() từ QuanLyKhachHangController
+        $this->quanLyKhachHangController->updateThongTinKHTT();
+
         // Thêm thông báo thành công vào session và chuyển hướng về trang đơn hàng
         return redirect()->route('donhang.chitietdonhang', ['id' => $donHangId])
                          ->with('success', 'Cập nhật thành công!');
@@ -143,6 +157,9 @@ class SPDonHangController extends Controller
             ->where('IDDonHang', $donHangId)
             ->delete();
     
+        // Gọi phương thức updateThongTinKHTT() từ QuanLyKhachHangController
+        $this->quanLyKhachHangController->updateThongTinKHTT();
+
         // Thêm thông báo thành công vào session và chuyển hướng về trang chi tiết đơn hàng
         return redirect()->route('donhang.chitietdonhang', ['id' => $donHangId])
                          ->with('success', 'Sản phẩm đã được xóa khỏi đơn hàng!');

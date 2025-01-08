@@ -22,6 +22,7 @@
                 <th>Email</th>
                 <th>Số Điện Thoại</th>
                 <th>Ngày Bắt Đầu Làm Việc</th>
+                <th>Lương Cứng</th>
                 <th>Số Năm Làm Việc</th>
                 <th>Lương Hiện Tại</th>
                 <th>Hành Động</th>
@@ -38,8 +39,9 @@
                     <td>{{ $item->Email }}</td>
                     <td>{{ $item->SoDienThoai }}</td>
                     <td>{{ $item->NgayBatDauLamViec }}</td>
+                    <td>{{ number_format($item->LuongCung, 3) }}$</td>
                     <td>{{ $item->SoNamLamViec }}</td>
-                    <td>{{ number_format($item->LuongHienTai, 3) }}</td>
+                    <td>{{ number_format($item->LuongHienTai, 3) }}$</td>
                     <td>
                         <!-- Nút sửa -->
                         <a href="{{ route('nhanvien.edit', $item->IDNhanVien) }}" class="btn btn-sm btn-warning">Sửa</a>

@@ -15,7 +15,7 @@
             @foreach ($profitData as $row)
                 <tr>
                     <td>{{ $row['Ngay'] }}</td>
-                    <td>{{ number_format($row['LoiNhuan'], 2) }}</td>
+                    <td>{{ number_format($row['LoiNhuan'], 2) }}$</td>
                 </tr>
             @endforeach
         </tbody>
