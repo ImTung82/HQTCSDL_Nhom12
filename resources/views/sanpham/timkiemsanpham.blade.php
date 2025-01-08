@@ -34,6 +34,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">ID sản phẩm</th>
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Giá bán</th>
                     <th scope="col">Tỷ lệ giảm giá</th>
@@ -43,6 +44,9 @@
             <tbody>
                 @foreach($sanpham as $sp)
                     <tr>
+                        <td><a href="{{ route('sanpham.chitietsanpham', $sp->IDSanPham)}}" class="text-primary text-decoration-none">
+                            {{ $sp->IDSanPham }}
+                        </a></td>
                         <td>{{ $sp->TenSanPham }}</td>
                         <td>{{ number_format($sp->DonGiaBan, 3)}} $</td>
                         <td>{{ number_format($sp->TyLeGiamGia * 100, 0)}}%</td>
@@ -63,6 +67,7 @@
             </tbody>
         </table>
     @else
+
         <p>Không tìm thấy sản phẩm nào!</p>
     @endif
 @endsection

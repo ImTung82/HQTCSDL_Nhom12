@@ -7,7 +7,7 @@
         
         <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="mb-0">Chi Tiết Sản Phẩm</h1>
-    <a href="{{ route('sanpham.allsanpham') }}" class="btn btn-secondary">Quay Lại</a>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary">Quay Lại</a>
 </div>
 
 
