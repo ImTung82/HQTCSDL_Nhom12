@@ -6,7 +6,7 @@
     <h1 class="mb-4">Danh sách sản phẩm</h1>
 
     <a href="{{ route('sanpham.updateslsp') }}" class="btn btn-primary mb-4">Cập nhật thông tin</a>
-
+    
      @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

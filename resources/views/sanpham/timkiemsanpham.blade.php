@@ -70,4 +70,3 @@
 
         <p>Không tìm thấy sản phẩm nào!</p>
     @endif
-@endsection

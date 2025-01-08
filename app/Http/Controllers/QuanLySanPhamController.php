@@ -75,6 +75,7 @@ class QuanLySanPhamController extends Controller
     }
 
     /**
+
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -161,3 +162,4 @@ class QuanLySanPhamController extends Controller
         return view('sanpham.timkiemsanpham', compact('loaihang', 'sanpham', 'idLoaiHang', 'tenSanPham'));
     }
 }
+

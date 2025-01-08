@@ -7,6 +7,7 @@ use App\Http\Controllers\SPDonHangController;
 use App\Http\Controllers\QuanLySanPhamController;
 use App\Http\Controllers\QuanLyKhachHangController;
 
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
